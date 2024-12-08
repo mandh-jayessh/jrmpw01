@@ -1,0 +1,20 @@
+{
+  "name": "jrmpwjs01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "runAll": "npx playwright test",
+    "runAllChrome": "npx playwright test --project chromium",
+    "allureGenerate": "allure generate ./allure-results -o ./allure-report",
+    "allureOpen": "allure open ./allure-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@types/node": "^22.10.1",
+    "allure-playwright": "^3.0.7"
+  }
+}
