@@ -1,0 +1,21 @@
+{
+    "default": {
+        "paths:": [
+            "features/scenarios/"
+        ],
+        "require": [
+            "features/step_definitions/*.js",
+            "features/support/hooks.js"
+        ],
+        "dryRun": false,
+        "format": [
+            "summary",
+            "progress-bar",
+            "html:reports/cucumber-report.html",
+            "json:reports/cucumber-report.json",
+            "junit:reports/cucumber-report.xml"
+        ],
+        "retry": 1,
+        "retryTagFilter": "@flaky"
+    }
+}

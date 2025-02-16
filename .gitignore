@@ -3,5 +3,10 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
-allure-results
-allure-report
+tests/example.spec.js
+e2e/
+tests-examples/
+allure-results/
+allure-report/
+package-lock.json
+reports/
