@@ -8,6 +8,9 @@
             "features/support/hooks.js"
         ],
         "dryRun": false,
+        "formatOptions": {
+            "snippetInterface": "async-await"
+        },
         "format": [
             "summary",
             "progress-bar",
