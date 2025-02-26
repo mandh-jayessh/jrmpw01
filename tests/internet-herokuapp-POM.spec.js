@@ -122,9 +122,6 @@ test.describe("JavaScript Alerts with POM", () => {
     await javascriptAlerts.result_validation(
       "You successfully clicked an alert"
     );
-    // await expect(page.locator("#result")).toHaveText(
-    //   "You successfully clicked an alert"
-    // );
   });
 
   test("JS Confirm - Click OK", async ({ page }) => {
@@ -135,7 +132,6 @@ test.describe("JavaScript Alerts with POM", () => {
     });
     await javascriptAlerts.clickForConfirm();
     await javascriptAlerts.result_validation("You clicked: Ok");
-    // await expect(page.locator("#result")).toHaveText("You clicked: Ok");
   });
 
   test("JS Confirm - Click Cancel", async ({ page }) => {
@@ -146,7 +142,6 @@ test.describe("JavaScript Alerts with POM", () => {
     });
     await javascriptAlerts.clickForConfirm();
     await javascriptAlerts.result_validation("You clicked: Cancel");
-    // await expect(page.locator("#result")).toHaveText("You clicked: Cancel");
   });
 
   test("JS Prompt - Input text in prompt, Click OK and Validate Input Text", async ({
@@ -159,7 +154,6 @@ test.describe("JavaScript Alerts with POM", () => {
     });
     await javascriptAlerts.clickForPrompt();
     await javascriptAlerts.result_validation("You entered: Sadda Haq");
-    // await expect(page.locator("#result")).toHaveText("You entered: Sadda Haq");
   });
 
   test.afterEach("Close everything", async ({ page }) => {
