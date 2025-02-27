@@ -100,12 +100,12 @@ test.describe("Basic Interactions - Inputs, Checkboxes, Dropdowns, Drag and Drop
 });
 
 test.describe("JavaScript Alerts with POM", () => {
-  // const javascriptAlerts = new JavascriptAlertsPage(Page)
+  let javascriptAlerts = JavascriptAlertsPage;
 
   test.beforeEach(
     "Launch JS Alerts in Internet Herokuapp",
     async ({ page }) => {
-      const javascriptAlerts = new JavascriptAlertsPage(page);
+      javascriptAlerts = new JavascriptAlertsPage(page);
       await javascriptAlerts.goto();
       await expect(page.locator("#content")).toBeVisible();
       await page.waitForTimeout(2000);
@@ -113,7 +113,7 @@ test.describe("JavaScript Alerts with POM", () => {
   );
 
   test("JS Alert - Click OK", async ({ page }) => {
-    const javascriptAlerts = new JavascriptAlertsPage(page);
+    // const javascriptAlerts = new JavascriptAlertsPage(page);
     page.on("dialog", async (dialog) => {
       expect(dialog.message()).toEqual("I am a JS Alert");
       await dialog.accept();
@@ -125,7 +125,7 @@ test.describe("JavaScript Alerts with POM", () => {
   });
 
   test("JS Confirm - Click OK", async ({ page }) => {
-    const javascriptAlerts = new JavascriptAlertsPage(page);
+    // const javascriptAlerts = new JavascriptAlertsPage(page);
     page.on("dialog", async (dialog) => {
       expect(dialog.message()).toEqual("I am a JS Confirm");
       await dialog.accept();
@@ -135,7 +135,7 @@ test.describe("JavaScript Alerts with POM", () => {
   });
 
   test("JS Confirm - Click Cancel", async ({ page }) => {
-    const javascriptAlerts = new JavascriptAlertsPage(page);
+    // const javascriptAlerts = new JavascriptAlertsPage(page);
     page.on("dialog", async (dialog) => {
       expect(dialog.message()).toEqual("I am a JS Confirm");
       await dialog.dismiss();
@@ -147,7 +147,7 @@ test.describe("JavaScript Alerts with POM", () => {
   test("JS Prompt - Input text in prompt, Click OK and Validate Input Text", async ({
     page,
   }) => {
-    const javascriptAlerts = new JavascriptAlertsPage(page);
+    // const javascriptAlerts = new JavascriptAlertsPage(page);
     page.on("dialog", async (dialog) => {
       expect(dialog.message()).toEqual("I am a JS prompt");
       await dialog.accept("Sadda Haq");
