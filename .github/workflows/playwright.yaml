@@ -1,33 +1,33 @@
-name: Playwright Tests
-on:
-  push:
-    branches: GitHub-Actions
+# name: Playwright Tests
+# on:
+#   push:
+#     branches: GitHub-Actions
   
-jobs:
-  test:
-    timeout-minutes: 60
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
+# jobs:
+#   test:
+#     timeout-minutes: 60
+#     runs-on: windows-latest
+#     steps:
+#     - uses: actions/checkout@v4
+#     - uses: actions/setup-node@v4
+#       with:
+#         node-version: lts/*
 
-    - name: Install dependencies
-      run: npm install
+#     - name: Install dependencies
+#       run: npm install
       
-    - name: Install Playwright Browsers  
-      run: npx playwright install --with-deps
+#     - name: Install Playwright Browsers  
+#       run: npx playwright install --with-deps
       
-    - name: Run tests
-      run: npm run runAllChrome
+#     - name: Run tests
+#       run: npm run runAllChrome
 
-    - name: Run cucumber tests
-      run: npm run runAllFeatures  
+#     - name: Run cucumber tests
+#       run: npm run runAllFeatures  
 
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
-      with:
-        name: playwright-report
-        path: playwright-report/
-        retention-days: 1
+#     - uses: actions/upload-artifact@v4
+#       if: ${{ !cancelled() }}
+#       with:
+#         name: playwright-report
+#         path: playwright-report/
+#         retention-days: 1
