@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "runAll": "npx playwright test",
-    "runAllChrome": "npx playwright test --project chomium",
+    "runAllChrome": "npx playwright test --project chromium",
     "runAllFeatures": "npx cucumber-js",
     "allureGenerate": "allure generate ./allure-results -o ./allure-report --clean",
     "allureOpen": "allure open ./allure-report"
