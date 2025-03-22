@@ -14,7 +14,7 @@ Feature: Internet Heroku App
       | Broken Images                 |
       | Challenging DOM               |
       | Checkboxes                    |
-      | Context Menu|
+      | Context Menu                  |
       | Digest Authentication         |
       | Disappearing Elements         |
       | Drag and Drop                 |
