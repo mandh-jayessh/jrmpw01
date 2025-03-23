@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: Cucumber Tests
 on:
   push:
     branches: GitHub-Actions
@@ -13,8 +13,8 @@ jobs:
       with:
         node-version: lts/*
       
-    - name: Install Playwright 
-      run: npm init playwright@latest
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
 
     - name: Install Cucumber 
       run: npm i @cucumber/cucumber -D  
