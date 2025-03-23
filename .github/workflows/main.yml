@@ -1,7 +1,6 @@
 name: Cucumber Tests
 on:
-  push:
-    branches: GitHub-Actions
+  workflow_dispatch:
   
 jobs:
   test:
