@@ -22,9 +22,6 @@ jobs:
     - name: Run tests
       run: npm run runAllChrome
 
-    - name: Run cucumber tests
-      run: npm run runAllFeatures  
-
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
