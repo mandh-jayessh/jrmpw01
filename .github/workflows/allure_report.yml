@@ -44,7 +44,7 @@ jobs:
         allure_results: build/allure-results
 
     - name: Publish test report
-      uses: peaceiris/actions-GitHub-Actions@v3
+      uses: peaceiris/actions-GitHub-Actions@v2
       if: always()
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
