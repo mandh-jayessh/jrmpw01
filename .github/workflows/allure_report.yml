@@ -1,7 +1,8 @@
 name: Manual Trigger Report
 
 on:
-  workflow_dispatch:
+  push:
+    branches: GitHub-Actions
 
 jobs:
   test:
