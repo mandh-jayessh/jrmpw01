@@ -1,0 +1,38 @@
+name: Run Tests with Allure Report
+
+on:
+  push:
+    branches: gha
+
+jobs:
+  test:
+    timeout-minutes: 30
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+
+    - name: Run Cucumber tests
+      run: npx cucumber-js --require-module ts-node/register --require 'tests/**/*.ts' --format progress
+
+    - name: Generate Allure Report
+      run: |
+        npx allure generate build/allure-results --clean -o build/allure-report
+
+    - name: Upload Allure Report Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: allure-report
+        path: build/allure-report

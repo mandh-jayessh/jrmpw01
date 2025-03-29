@@ -1,8 +1,7 @@
 name: Cucumber Playwright Tests with Allure Report
 
 on:
-  push:
-    branches: gha
+  workflow_dispatch:
   
 jobs:
   test:
