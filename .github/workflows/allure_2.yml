@@ -12,8 +12,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-
-    - name: Setup Node.js
+      
+    - name: Setup Node.JS    
       uses: actions/setup-node@v4
       with:
         node-version: lts/*
@@ -30,6 +30,9 @@ jobs:
     - name: Generate Allure Report
       run: |
         npx allure generate build/allure-results --clean -o build/allure-report
+
+    - name: Check Allure Report Directory
+      run: ls -al build/allure-report
 
     - name: Upload Allure Report Artifact
       uses: actions/upload-artifact@v3
