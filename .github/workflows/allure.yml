@@ -40,7 +40,7 @@ jobs:
         path: gh
 
     - name: Deploy Allure Report to GitHub Pages
-      uses: peaceiris/actions-gh@v3
+      uses: JamesIves/github-pages-deploy-action@v4
       if: always()
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
