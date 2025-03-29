@@ -22,10 +22,10 @@ jobs:
       run: npm install
 
     - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+      run: npx playwright install --with-deps --only-shell
 
     - name: Run Cucumber tests
-      run: npx cucumber-js --require-module ts-node/register --require 'tests/**/*.ts' --format progress
+      run: npx cucumber-js
 
     - name: Generate Allure Report
       run: |
