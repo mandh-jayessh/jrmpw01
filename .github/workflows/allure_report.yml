@@ -1,0 +1,51 @@
+name: Manual Trigger Report
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    timeout-minutes: 30
+    runs-on: windows-latest  
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+
+    - name: Run Cucumber tests
+      run: npx cucumber-js --require-module ts-node/register --require 'tests/**/*.ts' --format progress
+
+    - name: Load test report history
+      uses: actions/checkout@v3
+      if: always()
+      continue-on-error: true
+      with:
+        ref: GitHub-Actions
+        path: GitHub-Actions
+
+    - name: Build test report
+      uses: simple-elf/allure-report-action@v1.7
+      if: always()
+      with:
+        gh_pages: GitHub-Actions
+        allure_history: allure-history
+        allure_results: build/allure-results
+
+    - name: Publish test report
+      uses: peaceiris/actions-GitHub-Actions@v3
+      if: always()
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: GitHub-Actions
+        publish_dir: allure-history
