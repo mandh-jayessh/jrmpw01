@@ -1,0 +1,48 @@
+name: Cucumber Playwright Tests with Allure Report
+
+on:
+  push:
+    branches: gha
+  
+jobs:
+  test:
+    timeout-minutes: 30
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps --only-shell 
+
+    - name: Run Cucumber tests
+      run: npx cucumber-js 
+
+    - name: Generate Allure Report
+      run: |
+        npx allure generate build/allure-results --clean -o build/allure-report
+
+    - name: Checkout gh branch
+      uses: actions/checkout@v3
+      if: always()
+      continue-on-error: true
+      with:
+        ref: gh
+        path: gh
+
+    - name: Deploy Allure Report to GitHub Pages
+      uses: peaceiris/actions-gh@v3
+      if: always()
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh
+        publish_dir: build/allure-report
