@@ -3,7 +3,7 @@ Feature: Internet Heroku App
   Background:
     Given I launch the Internet Heroku App
 
-  Scenario Outline: Link Validations
+  Scenario Outline: Link Validations - <list_item>
     When I click the <list_item>
 
     Examples:

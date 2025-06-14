@@ -13,7 +13,7 @@ let browser = Browser,
 setDefaultTimeout(30 * 1000);
 
 BeforeAll(async function () {
-  browser = await chromium.launch();
+  browser = await chromium.launch({ channel: "chrome" });
 });
 
 Before(async function () {
@@ -31,7 +31,10 @@ AfterStep(async function ({ result, pickle }) {
   }
 });
 
-After(async function () {
+After(async function ({ result, pickle }) {
+  const status = result.status;
+  const scenarioName = pickle.name;
+  console.log(`Scenario "${scenarioName}" ended with status: ${status}`);
   await this.page.close();
   await context.close();
 });
